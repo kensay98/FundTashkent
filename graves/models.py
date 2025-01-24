@@ -14,10 +14,9 @@ class Graves(models.Model):
         verbose_name = 'Могила'
         verbose_name_plural = 'Могилы'
 
-
     def generate_path():
         return "%s/%s/" % (datetime.now().year, datetime.now().month)
-    
+
     name = models.CharField(max_length=200, verbose_name='Имя')
     birthday = models.CharField(verbose_name='Дата рождения', max_length=128)
     day_of_death = models.CharField(verbose_name='Дата смерти', max_length=128)
@@ -35,9 +34,9 @@ class Graves(models.Model):
     def have_photo(self):
         try:
             response = requests.request("GET", "http://fundtashkent.org/%s" % self.big_photo.url)
-            if(response.status_code == 200):
+            if (response.status_code == 200):
                 return True
-            elif(response.status_code == 404):
+            elif (response.status_code == 404):
                 return False
         except:
             return False

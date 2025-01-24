@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 ALF = ['А', 'Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Е', 'Ё', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П',
        'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я']
 
+
 # Pages
 def index(request):
     args = dict()
@@ -12,8 +13,10 @@ def index(request):
     args['page'] = Page.objects.get(name='Главная')
     return render(request=request, template_name='page.html', context=args)
 
+
 def contacts(request):
     return render(request=request, template_name='contacts.html')
+
 
 def about(request):
     return render(request=request, template_name='about.html')
@@ -22,8 +25,10 @@ def about(request):
 def donate(request):
     return render(request=request, template_name='donate.html')
 
+
 def partners(request):
     return render(request=request, template_name='partners.html')
+
 
 def gallery(request):
     return render(request=request, template_name='gallery.html')
@@ -121,9 +126,7 @@ def display_page(request, title):
 
 def memorials_list(request, start, end):
     args = dict()
-    if int(end)==0:
+    if int(end) == 0:
         end = Memorials.objects.count()
     args['memorials'] = Memorials.objects.all().order_by('number')[int(start):int(end)]
     return render(request=request, template_name='memorial_list.html', context=args)
-
-
