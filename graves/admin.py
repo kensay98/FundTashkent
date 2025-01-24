@@ -20,6 +20,6 @@ class GravesAdmin(admin.ModelAdmin):
 
 admin.site.register(Graves, GravesAdmin)
 admin.site.register(News)
-admin.site.register(OurProjects)
+# admin.site.register(OurProjects)
 admin.site.register(Page)
 admin.site.register(Memorials)
