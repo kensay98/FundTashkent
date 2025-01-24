@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ grave.name }} | Фонд Ташкент
+{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+
+        <div class="alf">
+            {% for a in alf %}
+                <a href="{% url 'graves' grave.cemetery a %}">{{ a }}</a>
+            {% endfor %}
+        </div>
+
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="search" id="search" placeholder="Поиск по имени"/>
+            <input type="submit" name="submit" id="submit" value="Поиск" class="btn-primary"/>
+        </form>
+
+        <h2>{{ grave.name }}</h2>
+        <div class="row">
+	{% if have_photo %}
+            <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9">
+                <img src="{{ grave.big_photo.url|default_if_none:"НЕТ ФОТО" }}" alt="image" class="img-responsive"/>
+            </div>
+	{% endif %}
+        </div>
+        <hr/>
+
+        <p>
+            Кладбище -
+            {% if grave.cemetery == 1 %}
+                Текстиль
+             {% elif grave.cemetery == 2 %}
+                 Чигатай
+             {% endif %}
+        </p>
+
+        <p>Дата рождения:   {{ grave.birthday }}</p>
+        <p>Дата смерти:     {{ grave.day_of_death }}</p>
+
+        <p>Карта:   {{ grave.sector }}</p>
+        <p>Ряд:     {{ grave.row }}</p>
+        <p>Номер:   {{ grave.number }}</p>
+        {% if grave.part_ww == 1 %}
+            <p>Ветеран войны:   Y.</p>
+        {% endif %}
+
+        <h3>Поставить свечу</h3>
+        <object style="display:block; margin-top:10px; width: 70%; height: 300px" data="{% static 'images/svecha.swf' %}" type="application/x-shockwave-flash">
+        <param value="{% static 'images/svecha.swf' %}" name="movie">
+        </object>
+    </div>
+
+{% endblock %}
+
+

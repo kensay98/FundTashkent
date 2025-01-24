@@ -1,0 +1,139 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    
+
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    
+    <script src="{% static 'scripts/vendor/modernizr.js' %}"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container text-center">
+        <a href="/" class="logo"><img src="{% static 'images/logo.png' %}" alt="" title="" class="img-responsive"/></a>
+      </div>
+    </header>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Главная</a></li>
+            <li><a href="{% url 'donate' %}">Пожертвовать</a></li>
+            <li><a href="{% url 'page' 'Партнеры' %}">Партнеры</a></li>
+{#            <li><a href="#">Памятники</a></li>#}
+            <li><a href="{% url 'page' 'Контакты' %}">Контакты</a></li>
+            <li><a href="{% url 'page' 'История' %}">История кладбищ</a></li>
+            <li><a href="{% url 'page' 'Памятники' %}">Памятники</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4">
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+                <div class="menu">
+                  <h2 class="text-center">Кладбища</h2>
+                  <div class="content">
+                    <ul>
+                      <li><a href="{% url 'graves' 1 %}">Текстиль</a></li>
+                      <li><a href="{% url 'graves' 2 %}">Чигатай</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="menu">
+{#                  <h2 class="text-center">Чиготай</h2>#}
+                  <div class="content">
+                    <ul>
+                        <li><a href="{% url 'page' 'Пресса' %}">Пресса</a></li>
+                        <li><a href="{% url 'page' 'Raising' %}">Fund Raising</a></li>
+                        <li><a href="{% url 'page' 'Галерея' %}">Галерея</a></li>
+                        <li><a href="{% url 'page' 'Услуги' %}">Наши услуги</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 col-sm-8">
+
+              {% block content %}{% endblock %}
+
+
+{#            <div class="contacts__block visible-xs">#}
+{#              <h4>Связатся с нами:</h4>#}
+{#              <div class="media">#}
+{#                <a class="pull-left" href="#">#}
+{#                  <img class="media-object" src="{% static 'images/cont_icon_1.png' %}" alt="" title=""/>#}
+{#                </a>#}
+{#                <div class="media-body">#}
+{#                  <p class="media-heading"><a href="#">Наши <br/>контакты</a></p>#}
+{#                </div>#}
+{#              </div>#}
+{#              <div class="media">#}
+{#                <a class="pull-left" href="#">#}
+{#                  <img class="media-object" src="{% static 'images/cont_icon_2.png' %}" alt="" title=""/>#}
+{#                </a>#}
+{#                <div class="media-body">#}
+{#                  <p class="media-heading"><a href="#">Мы <br/>на Facebook</a></p>#}
+{#                </div>#}
+{#              </div>#}
+{#              <div class="media">#}
+{#                <a class="pull-left" href="#">#}
+{#                  <img class="media-object" src="{% static 'images/cont_icon_3.png' %}" alt="" title=""/>#}
+{#                </a>#}
+{#                <div class="media-body">#}
+{#                  <p class="media-heading"><a href="#">Мы на <br/>Одноклассники.ру</a></p>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="content">
+              <div id="scrollup"><img alt="Прокрутить вверх" src="{%static '/images/up.png' %}"></div>
+
+              <p>Copyright 2016 Charity Fund Tashkent | All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'scripts/vendor.js' %}"></script>
+    
+    <script src="{% static 'scripts/plugins.js' %}"></script>
+    <script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'></script>    
+    <script src="{% static 'scripts/main.js' %}"></script>
+  </body>
+</html>

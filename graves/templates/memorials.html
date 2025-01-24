@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Памятники | Фонд Ташкент
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>Памятники:</h1>
+        <p><a href="{% url 'memorials' 1 100 %}">1-100</a></p>
+        <p><a href="{% url 'memorials' 101 200 %}">100-200</a></p>
+        <p><a href="{% url 'memorials' 200 %}">200-300</a></p>
+    </div>
+{% endblock %}
+

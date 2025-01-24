@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Главная | Фонд Ташкент
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+      <h3>О нас</h3>
+      <p>Благотворительный фонд «Ташкент» имени Давида Аминова искренне благодарит всех ташкентцев, членов их семей за участие и помошь в благоустроительных работах кладбищ города Ташкента. Сейчас на кладбищах, со слов посетителей и гостей хорошо, чисто, убрано и уютно. Сохранение их в таком состоянии требуют постоянного внимания, работы и капиталовложения.</p>
+      <p>Мы призываем всех, кому не безразлична память ему близких людей, независимо от того в каком штате или стране (Австрия, Израиль) проживает человек, он морально обязан помочь фонду</p>
+    </div>
+    <div class="btn_block">
+      <div class="media">
+        <a class="pull-left btn btn-info btn-lg" href="{% url 'donate' %}">ПОЖЕРТВОВАТЬ</a>
+        <div class="media-body">
+          <p class="media-heading">Присоединиться к делу <br/>и сделать пожертвование</p>
+        </div>
+      </div>
+    </div>
+    <div class="news">
+      <h3>Последние новости:</h3>
+
+      {% for new in news %}
+          <article class="row">
+            <div class="col-md-12 title">
+              <h3>{{ new.title }}<span>{{ new.date }}</span></h3>
+            </div>
+            <div class="col-md-3 col-sm-3 col-md-push-9 col-sm-push-9">
+{#              <a href="#"><img src="{% static 'images/image1.jpg' %}" alt="" title="" class="img-responsive"/></a>#}
+            </div>
+            <div class="col-md-9 col-sm-9 col-md-pull-3 col-sm-pull-3 text-justify">
+                {{ new.text }}
+            </div>
+          </article>
+      {% endfor %}
+
+    </div>
+
+{% endblock %}
+

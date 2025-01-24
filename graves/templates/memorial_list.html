@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Памятники | Фонд Ташкент
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>Памятники:</h1>
+	<h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(0, 0, 0);"><a href="http://fundtashkent.org/page/Памятники/" style="color: rgb(42, 100, 150); text-decoration: underline; outline: 0px;">&lt;&lt; Назад</a></h3>
+        {% for memorial in memorials %}
+            <p><img width="50%" height="auto"  src="/{{ memorial.photo }}" alt="#"></p><p>{{ memorial.translation }}</p><hr>
+        {% endfor %}
+
+    </div>
+{% endblock %}

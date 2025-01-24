@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Поиск | Фонд Ташкент
+{% endblock %}
+
+
+{% block content %}
+<div class="entry">
+    <h3>Результаты поиска по запросу "{{ search }}":</h3>
+    <table class="table table-striped table-hover table-condensed">
+     <thead>
+     <tr>
+     <th>Имя</th>
+     <th>Год Рождения</th>
+     <th>Год Смерти</th>
+     <th>Кладбище</th>
+     <th>Сектор</th>
+     <th>Ряд</th>
+     <th>Номер</th>
+     </tr>
+     </thead>
+     <tbody>
+     {% for grave in results %}
+
+         <tr>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Имя">{{ grave.name }}</td>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Год Рождения">{{ grave.birthday }}</td>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Год Смерти">{{ grave.day_of_death }}</td>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Кладбище">
+             {% if grave.cemetery == 1 %}
+                Текстиль
+             {% elif grave.cemetery == 2 %}
+                 Чигатай
+             {% endif %}
+         </td>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Сектор">{{ grave.sector }}</td>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Ряд">{{ grave.row }}</td>
+         <td onclick="document.location='{% url 'grave' grave.id %}';" data-label="Номер">{{ grave.number }}</td>
+         </tr>
+     {% endfor %}
+     </tbody>
+     </table>
+</div>
+{% endblock %}
+
+

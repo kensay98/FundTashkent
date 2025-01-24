@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Новости | Фонд Ташкент
+{% endblock %}
+
+{% block content %}
+    <div class="entry">
+        <img src="" alt="">
+        <h1><a href="#">Новости</a></h1>
+        <br/>
+        {% for n in news %}
+            <article>
+                <h3>{{ n.title }}</h3>
+                <p>{{ n.text }}</p>
+                <p>{{ n.date }}</p>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
+
