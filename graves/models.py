@@ -18,15 +18,22 @@ class Graves(models.Model):
         return "%s/%s/" % (datetime.now().year, datetime.now().month)
 
     name = models.CharField(max_length=200, verbose_name='Имя')
+    first_name = models.CharField(max_length=200, verbose_name='Имя')
+    last_name = models.CharField(max_length=200, verbose_name='Фамилия')
+    third_name = models.CharField(max_length=200, verbose_name='Отчество')
+
     birthday = models.CharField(verbose_name='Дата рождения', max_length=128)
     day_of_death = models.CharField(verbose_name='Дата смерти', max_length=128)
+
+    part_ww = models.IntegerField(verbose_name='Учавствовал ли во ВоВ?')
+
+    photo = models.FileField(verbose_name='Фото')
+    big_photo = models.FileField(verbose_name='Фото', upload_to='%Y/%m/')
+
+    cemetery = models.IntegerField(verbose_name='Кладбище', choices=GRAVES_CHOICES)
     sector = models.CharField(max_length=200, verbose_name='Карта')
     row = models.CharField(max_length=200, verbose_name='Ряд')
     number = models.CharField(max_length=200, verbose_name='Номер')
-    part_ww = models.IntegerField(verbose_name='Учавствовал ли во ВоВ?')
-    photo = models.FileField(verbose_name='Фото')
-    big_photo = models.FileField(verbose_name='Фото', upload_to='%Y/%m/')
-    cemetery = models.IntegerField(verbose_name='Кладбище', choices=GRAVES_CHOICES)
 
     def __str__(self):
         return self.name
